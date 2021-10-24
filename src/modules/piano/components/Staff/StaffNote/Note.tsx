@@ -31,7 +31,11 @@ export const StaffNote: FC<Props> = memo(({ note, isError }) => {
       title={note.label}
     >
       <Styled.NoteInner isError={isError}>
-        {note.sharp && <Sharp />}
+        {note.sharp && (
+          <Styled.Sharp>
+            <Sharp />
+          </Styled.Sharp>
+        )}
         <SimpleNote />
       </Styled.NoteInner>
     </Styled.Note>

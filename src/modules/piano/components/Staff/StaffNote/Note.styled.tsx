@@ -26,3 +26,10 @@ export const NoteInner = styled.div<NoteProps>(
     `}
   `
 );
+
+export const Sharp = styled.div(
+  ({ theme: { utils } }) => css`
+    margin-left: ${utils.em(-13 - 4)};
+    margin-right: ${utils.em(4)};
+  `
+);
