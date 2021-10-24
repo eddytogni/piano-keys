@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components';
+import { Zoom } from '../Settings';
 
 const MULTIPLIER = 1;
 
-export const Staff = styled.div(
-  ({ theme: { utils, borderRadius } }) => css`
+export const Staff = styled.div<{ zoom: Zoom }>(
+  ({ theme: { utils, borderRadius }, zoom = MULTIPLIER }) => css`
     background: white;
     border-radius: ${borderRadius};
     box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
     color: black;
-    font-size: ${utils.rem(16 * MULTIPLIER)};
+    font-size: ${utils.rem(16 * zoom)};
     max-width: ${utils.em(320)};
     position: relative;
     width: 100%;
