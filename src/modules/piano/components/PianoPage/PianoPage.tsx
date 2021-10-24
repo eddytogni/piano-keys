@@ -1,16 +1,15 @@
-import { FC, useEffect } from 'react';
+import { Button, Dialog, Icon } from '@ui';
+import { FC, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { usePiano, useStorate } from '../../hooks';
+import { useMedia, usePiano } from '../../hooks';
 import { Piano } from '../Piano';
+import { Level, Settings, SettingsOptions, Zoom } from '../Settings';
 import { Staff } from '../Staff';
-import { Sharp } from '../Staff/Svg';
 import * as Styled from './PianoPage.styled';
 
 interface Props {
   inputs: WebMidi.MIDIInputMap | null;
 }
-
-type Level = 'beginner' | 'intermediate' | 'advanced';
 
 const LEVELS = {
   beginner: {
@@ -27,9 +26,19 @@ const LEVELS = {
   },
 };
 
+function getDefaultSettings(): SettingsOptions {
+  return {
+    level: (localStorage.getItem('level') as Level) ?? 'beginner',
+    withSharp: localStorage.getItem('with-sharp') === 'true',
+    zoom: parseFloat((localStorage.getItem('zoom') as string) ?? 1) as Zoom,
+  };
+}
+
 export const PianoPage: FC<Props> = ({ inputs }) => {
-  const [level, setLevel] = useStorate<Level>('level', 'beginner');
-  const [withSharp, setWithSharp] = useStorate<boolean>('with-sharp', false);
+  const showPiano = useMedia(['(min-width: 1080px)'], [true], false);
+
+  const [withSettings, showSettings] = useState<boolean>(false);
+  const [{ level, withSharp, zoom }, setSettings] = useState<SettingsOptions>(getDefaultSettings());
 
   const {
     started,
@@ -40,7 +49,6 @@ export const PianoPage: FC<Props> = ({ inputs }) => {
     handleContinue,
     handleOff,
     handleOn,
-    handleReset,
   } = usePiano(inputs, {
     withSharp,
     ...LEVELS[level],
@@ -55,46 +63,31 @@ export const PianoPage: FC<Props> = ({ inputs }) => {
   }, [inputs]);
 
   return (
-    <Styled.Page>
-      <Styled.ActionBar>
-        <div>
-          {(!started || !practicing) && (
-            <Styled.Start onClick={handleContinue}>
-              <Styled.Key>C</Styled.Key>
-              <span>{started && !practicing ? 'Continue' : 'Start'}</span>
-            </Styled.Start>
-          )}
-        </div>
-        <Styled.Levels>
-          <Styled.Level isActive={level === 'beginner'} onClick={() => setLevel('beginner')}>
-            Beginner
-          </Styled.Level>
-          <Styled.Level
-            isActive={level === 'intermediate'}
-            onClick={() => setLevel('intermediate')}
-          >
-            Intermediate
-          </Styled.Level>
-          <Styled.Level isActive={level === 'advanced'} onClick={() => setLevel('advanced')}>
-            Advanced
-          </Styled.Level>
-          <Styled.Sharp isActive={withSharp} onClick={() => setWithSharp(!withSharp)}>
-            <Sharp />
-          </Styled.Sharp>
-        </Styled.Levels>
-        <div>
-          {started && !practicing && (
-            <Styled.Start onClick={handleReset}>
-              <span>Reset</span>
-              <Styled.Key>B</Styled.Key>
-            </Styled.Start>
-          )}
-        </div>
-      </Styled.ActionBar>
-      <Styled.Staff>
-        <Staff note={currentNote} errorNote={errorNote} />
-      </Styled.Staff>
-      <Piano keys={pressedKeys} onPress={handleOn} onRelease={handleOff} />
-    </Styled.Page>
+    <>
+      <Styled.Page>
+        <Styled.ActionBar>
+          <div>
+            {(!started || !practicing) && (
+              <Button onClick={handleContinue}>
+                <Styled.Key>C</Styled.Key>
+                <span>{started && !practicing ? 'Continue' : 'Start'}</span>
+              </Button>
+            )}
+          </div>
+          <div>
+            <Button icon="only" onClick={() => showSettings(true)}>
+              <Icon icon="settings" size="2x" />
+            </Button>
+          </div>
+        </Styled.ActionBar>
+        <Styled.Staff>
+          <Staff note={currentNote} errorNote={errorNote} zoom={zoom} />
+        </Styled.Staff>
+        {showPiano && <Piano keys={pressedKeys} onPress={handleOn} onRelease={handleOff} />}
+      </Styled.Page>
+      <Dialog show={withSettings} size="mobile" onClose={() => showSettings(false)}>
+        <Settings onChange={setSettings} />
+      </Dialog>
+    </>
   );
 };

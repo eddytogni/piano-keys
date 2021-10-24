@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { B_KEYS, KEY_MAP, KEY_ON, MIDDLE_C_KEY, Note } from '../keys';
+import { KEY_MAP, KEY_ON, MIDDLE_C_KEY, Note } from '../keys';
 import { getRandomeNote, RandomNoteOptions } from '../utils';
 
 type Options = RandomNoteOptions;
@@ -19,16 +19,6 @@ export const usePiano = (inputs: WebMidi.MIDIInputMap | null, options: Options) 
     started: false,
     practicing: false,
   });
-
-  const handleReset = () => {
-    setState((state) => ({
-      ...state,
-      started: false,
-      practicing: false,
-      currentNote: null,
-      errorNote: null,
-    }));
-  };
 
   const handleContinue = () => {
     let note = getRandomeNote(options);
@@ -64,8 +54,6 @@ export const usePiano = (inputs: WebMidi.MIDIInputMap | null, options: Options) 
       }
     } else if (key === MIDDLE_C_KEY) {
       handleContinue();
-    } else if (B_KEYS.includes(key)) {
-      handleReset();
     }
   };
 
@@ -106,6 +94,5 @@ export const usePiano = (inputs: WebMidi.MIDIInputMap | null, options: Options) 
     handleOn,
     handleOff,
     handleContinue,
-    handleReset,
   };
 };
