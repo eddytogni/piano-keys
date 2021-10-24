@@ -17,5 +17,5 @@
   "background_color": "#26355a",
   "start_url": "/?source=pwa",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "landscape"
 }
