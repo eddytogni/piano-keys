@@ -58,7 +58,7 @@ export const BassClef = styled.div(
     flex-direction: column;
     height: ${utils.em(68)};
     position: absolute;
-    top: ${utils.em(144)};
+    top: ${utils.em(138)};
     width: 100%;
   `
 );
