@@ -1,8 +1,8 @@
-import StaffSvg from '@assets/staff.svg';
 import { FC, memo } from 'react';
 import { BASS_NOTES, Note, TREBLE_NOTES } from '../../keys';
 import * as Styled from './Staff.styled';
 import { StaffLine } from './StaffLine';
+import { StaffSvg } from './Svg';
 
 interface Props {
   note: Note | null;
@@ -16,7 +16,7 @@ export const Staff: FC<Props> = memo(({ note, errorNote }) => {
   return (
     <Styled.Staff>
       <Styled.NoteSpace>
-        <Styled.Image src={StaffSvg} />
+        <StaffSvg />
         <Styled.TrebleClef>
           <StaffLine note={note} errorNote={errorNote} notes={TrebleNotes} />
         </Styled.TrebleClef>

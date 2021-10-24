@@ -32,14 +32,6 @@ export const NoteSpace = styled.div(
   `
 );
 
-export const Image = styled.img(
-  () => css`
-    display: block;
-    height: 100%;
-    width: 100%;
-  `
-);
-
 export const TrebleClef = styled.div(
   ({ theme: { utils } }) => css`
     display: flex;
@@ -47,7 +39,7 @@ export const TrebleClef = styled.div(
     justify-content: flex-end;
     height: ${utils.em(70)};
     position: absolute;
-    top: ${utils.em(48)};
+    top: ${utils.em(47.5)};
     width: 100%;
   `
 );
@@ -56,9 +48,9 @@ export const BassClef = styled.div(
   ({ theme: { utils } }) => css`
     display: flex;
     flex-direction: column;
-    height: ${utils.em(68)};
+    height: ${utils.em(70)};
     position: absolute;
-    top: ${utils.em(138)};
+    top: ${utils.em(137)};
     width: 100%;
   `
 );
