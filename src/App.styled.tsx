@@ -38,3 +38,10 @@ export const UnsupportedBox = styled.div(
     padding: ${utils.rem(32)};
   `
 );
+
+export const Link = styled.a(
+  ({ theme: { utils } }) => css`
+    color: ${utils.color('primary', 'main')};
+    font-size: ${utils.rem(16)};
+  `
+);
