@@ -62,5 +62,5 @@ export const TREBLE_NOTES = KEYS.filter(
 ).reverse();
 
 export const BASS_NOTES = KEYS.filter(
-  ({ key }) => key < MIDDLE_C_KEY && key >= FIRST_STAFF_KEY
+  ({ key }) => key <= MIDDLE_C_KEY && key >= FIRST_STAFF_KEY
 ).reverse();
