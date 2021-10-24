@@ -2,7 +2,7 @@ import { Theme } from '@ui';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, Unsupported, UnsupportedBox } from './App.styled';
-import { PianoPage } from './modules/piano/components/PianoPage';
+import { PianoPage } from './modules/piano';
 
 const MIDI_COMPATIBLE = 'requestMIDIAccess' in navigator;
 
