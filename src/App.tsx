@@ -20,7 +20,7 @@ function App() {
 
   const requestMidiAccess = async () => {
     try {
-      const midiAccess = await navigator.requestMIDIAccess();
+      const midiAccess = await navigator.requestMIDIAccess({ sysex: true });
       setMidiAccess(midiAccess);
       setInputs(midiAccess.inputs);
       setCompatible(true);
@@ -46,7 +46,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyles />
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       {isCompatible ? (
         <PianoPage inputs={inputs} />
       ) : (
