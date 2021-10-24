@@ -21,7 +21,7 @@ declare module 'styled-components' {
   export type Colors = Record<Color, PaletteColor>;
   export type ColorName = keyof PaletteColor;
 
-  export type Background = 'default' | 'paper';
+  export type Background = 'default' | 'paper' | 'dialog' | 'backdrop';
   export type Backgrounds = Record<Background, string>;
   export type Gradients = Record<Color, string>;
   export type FontKey = 'header' | 'body' | 'accent';

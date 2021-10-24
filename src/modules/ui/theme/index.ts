@@ -37,6 +37,8 @@ export const Theme = (function (mode: Mode): DefaultTheme {
       background: {
         default: '#26355a',
         paper: 'rgba(255, 255, 255, 0.1)',
+        dialog: 'white',
+        backdrop: chroma('26355a').alpha(0.4).css(),
       },
     },
     gradients: {
