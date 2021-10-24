@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-const VERSION = 'v0.0.1';
+const VERSION = 'v0.0.2';
 const baseUrl = self.location.origin;
 
 const [CACHED_OFFLINE, ...CACHED_FILES] = [
