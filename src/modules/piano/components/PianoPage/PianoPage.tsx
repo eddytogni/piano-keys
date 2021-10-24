@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Piano } from '..';
 import { usePiano, useStorate } from '../../hooks';
+import { Piano } from '../Piano';
 import { Staff } from '../Staff';
 import { Sharp } from '../Staff/Svg';
 import * as Styled from './PianoPage.styled';
