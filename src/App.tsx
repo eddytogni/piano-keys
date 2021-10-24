@@ -2,7 +2,7 @@ import { Theme } from '@ui';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, Unsupported, UnsupportedBox } from './App.styled';
-import { PianoEntryPoint } from './modules/piano/components/EntryPoint';
+import { PianoPage } from './modules/piano/components/PianoPage';
 
 const MIDI_COMPATIBLE = 'requestMIDIAccess' in navigator;
 
@@ -34,7 +34,7 @@ function App() {
           <UnsupportedBox>Not supported MIDI device</UnsupportedBox>
         </Unsupported>
       ) : (
-        <PianoEntryPoint inputs={inputs} />
+        <PianoPage inputs={inputs} />
       )}
     </ThemeProvider>
   );

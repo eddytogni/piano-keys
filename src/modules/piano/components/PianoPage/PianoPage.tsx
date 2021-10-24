@@ -3,7 +3,7 @@ import { Piano } from '..';
 import { usePiano, useStorate } from '../../hooks';
 import { Staff } from '../Staff';
 import { Sharp } from '../Staff/Svg';
-import * as Styled from './EntryPoint.styled';
+import * as Styled from './PianoPage.styled';
 
 interface Props {
   inputs: WebMidi.MIDIInputMap | null;
@@ -26,7 +26,7 @@ const LEVELS = {
   },
 };
 
-export const PianoEntryPoint: FC<Props> = ({ inputs }) => {
+export const PianoPage: FC<Props> = ({ inputs }) => {
   const [level, setLevel] = useStorate<Level>('level', 'beginner');
   const [withSharp, setWithSharp] = useStorate<boolean>('with-sharp', false);
 

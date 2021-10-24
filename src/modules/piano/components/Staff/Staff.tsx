@@ -1,8 +1,8 @@
 import StaffSvg from '@assets/staff.svg';
 import { FC, memo } from 'react';
 import { BASS_NOTES, Note, TREBLE_NOTES } from '../../keys';
-import { StaffLine } from './Line';
 import * as Styled from './Staff.styled';
+import { StaffLine } from './StaffLine';
 
 interface Props {
   note: Note | null;
