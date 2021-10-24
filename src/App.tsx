@@ -22,6 +22,7 @@ function App() {
     try {
       const midiAccess = await navigator.requestMIDIAccess();
       setMidiAccess(midiAccess);
+      setInputs(midiAccess.inputs);
       setCompatible(true);
     } catch (e) {
       setCompatible(false);
