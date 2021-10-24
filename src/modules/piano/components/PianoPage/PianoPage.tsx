@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { usePiano, useStorate } from '../../hooks';
 import { Piano } from '../Piano';
 import { Staff } from '../Staff';
@@ -44,6 +45,14 @@ export const PianoPage: FC<Props> = ({ inputs }) => {
     withSharp,
     ...LEVELS[level],
   });
+
+  useEffect(() => {
+    if (inputs?.size! === 0) {
+      toast.error('MIDI device IS NOT connected', { id: 'inputs' });
+    } else {
+      toast.success('MIDI device is connected', { id: 'inputs' });
+    }
+  }, [inputs]);
 
   return (
     <Styled.Page>
