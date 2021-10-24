@@ -4,17 +4,17 @@ const baseUrl = self.location.origin;
 
 const [CACHED_OFFLINE, ...CACHED_FILES] = [
   `${baseUrl}/offline.html`,
+  `${baseUrl}/favicon.ico`,
   `${baseUrl}/assets/android-chrome-192x192.png`,
   `${baseUrl}/assets/android-chrome-512x512.png`,
   `${baseUrl}/assets/apple-touch-icon.png`,
   `${baseUrl}/assets/favicon-16x16.png`,
   `${baseUrl}/assets/favicon-32x32.png`,
-  `${baseUrl}/assets/favicon.ico`,
   `${baseUrl}/assets/logo.svg`,
   `${baseUrl}/assets/mstile-150x150.png`,
-  `${baseUrl}/assets/safari-pinned-tab.png`,
+  `${baseUrl}/assets/safari-pinned-tab.svg`,
   `${baseUrl}/assets/logo192.png`,
-  'https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto:wght@100;400;700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&family=Material+Icons&display=swap',
 ];
 
 self.addEventListener('install', (event) => {
