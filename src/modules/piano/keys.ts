@@ -35,7 +35,8 @@ export const LAST_STAFF_KEY = LAST_KEY;
 export const MIDDLE_C_KEY = 60;
 export const B_KEYS = [59, 47, 35, 23, 71, 83, 95, 107];
 export const STAFF_STRIKE_KEYS = [
-  23, 26, 29, 33, 36, 40, 60, 81, 84, 88, 91, 95, 98, 101, 105, 108,
+  23, 26, 27, 29, 30, 33, 34, 36, 37, 40, 60, 61, 81, 82, 84, 85, 88, 91, 92, 95, 98, 99, 101, 102,
+  105, 106, 108,
 ];
 export const NB_KEYS = LAST_KEY - FIRST_KEY + 1;
 
