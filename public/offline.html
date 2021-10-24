@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Piano Keys</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        background: #26355a;
+        height: 100%;
+      }
+      body {
+        background: radial-gradient(at 100% 65%, #5094b0 0%, #4a6091 40%, #152141 100%);
+        background-attachment: fixed;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: Roboto;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .offline-page {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        left: 0;
+        padding: 4rem 2rem;
+        position: fixed;
+        right: 0;
+        text-align: center;
+        top: 0;
+        z-index: 99999;
+      }
+      .offline-page__logo {
+        margin-bottom: auto;
+        width: 16rem;
+      }
+      .offline-page__message {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .offline-page__message h1 {
+        color: #81cfb3;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0 0 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-page">
+      <img class="offline-page__logo" src="/assets/logo.svg" alt="Recodify" />
+      <div class="offline-page__message">
+        <h1>Offline</h1>
+        <span>Please verify<br />your internet connection...</span>
+      </div>
+    </div>
+  </body>
+</html>

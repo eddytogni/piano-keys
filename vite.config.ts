@@ -12,6 +12,7 @@ export default defineConfig({
     alias: {
       '@assets': path.resolve(__dirname, './src/assets'),
       '@ui': path.resolve(__dirname, './src/modules/ui'),
+      '@shared': path.resolve(__dirname, './src/modules/shared'),
     },
   },
   plugins: [react()],

@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@ui": ["./src/modules/ui/index"],
+      "@shared": ["./src/modules/shared/index"],
       "@assets": ["./src/assets"]
     }
   },
