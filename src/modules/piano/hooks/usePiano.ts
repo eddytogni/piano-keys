@@ -31,7 +31,14 @@ export const usePiano = (inputs: WebMidi.MIDIInputMap | null, options: Options) 
   };
 
   const handleContinue = () => {
-    const note = getRandomeNote(options);
+    let note = getRandomeNote(options);
+
+    if (currentNote) {
+      while (note.key === currentNote?.key) {
+        note = getRandomeNote(options);
+      }
+    }
+
     setState((state) => ({
       ...state,
       started: true,
