@@ -23,7 +23,11 @@ export const StaffNote: FC<Props> = memo(({ note, isError }) => {
   return transition(({ scale }) => (
     <Styled.Note
       as={animated.div}
-      style={{ transform: scale.to((scale) => `scale(${scale}) translate(-50%, -50%)`) }}
+      style={{
+        zIndex: isError ? 1 : 0,
+        opacity: isError ? 0.8 : 1,
+        transform: scale.to((scale) => `scale(${scale}) translate(-50%, -50%)`),
+      }}
       title={note.label}
     >
       <Styled.NoteInner isError={isError}>
