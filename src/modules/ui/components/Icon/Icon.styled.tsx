@@ -1,4 +1,4 @@
-import styled, { Color, keyframes } from 'styled-components';
+import styled, { Color, css, keyframes } from 'styled-components';
 
 export interface IconProps {
   color?: Color;
@@ -11,22 +11,26 @@ const spinAnimation = keyframes`
   100% { transform: 'rotate(360deg)'; }
 `;
 
-export const Icon = styled.i<IconProps>(({ theme: { utils }, color, size, spin }) => ({
-  alignItems: 'center',
-  color: color && utils.color(color, 'main'),
-  display: 'inline-flex',
-  fontFamily: 'Material Icons',
-  fontSize: 'inherit',
-  fontStyle: 'normal',
-  height: '1em',
-  justifyContent: 'center',
-  width: '1em',
+export const Icon = styled.i<IconProps>(
+  ({ theme: { utils }, color, size, spin }) => css`
+    align-items: center;
+    color: ${color && utils.color(color, 'main')};
+    display: inline-flex;
+    font-family: 'Material Icons';
+    font-size: inherit;
+    font-style: normal;
+    height: 1em;
+    justify-content: center;
+    width: 1em;
 
-  ...utils.css(!!size, {
-    fontSize: utils.em(parseFloat(size!) * 16),
-  }),
+    ${!!size &&
+    css`
+      font-size: ${utils.em(parseFloat(size!) * 16)};
+    `}
 
-  ...utils.css(spin, {
-    animation: () => `1s ${spinAnimation} linear infinite`,
-  }),
-}));
+    ${spin &&
+    css`
+      animation: ${spinAnimation} 1s linear infinite;
+    `}
+  `
+);
