@@ -6,8 +6,10 @@ import { GlobalStyles, Link, Unsupported, UnsupportedBox } from './App.styled';
 import { PianoPage } from './modules/piano';
 
 const MIDI_COMPATIBLE = 'requestMIDIAccess' in navigator;
+const WAKELOCK_COMPATIBLE = 'wakeLock' in navigator;
 
 function App() {
+  const [wakeLock, setWakeLock] = useState<WakeLockSentinel | null>(null);
   const [midiAccess, setMidiAccess] = useState<WebMidi.MIDIAccess | null>(null);
   const [inputs, setInputs] = useState<WebMidi.MIDIInputMap | null>(null);
   const [isCompatible, setCompatible] = useState(false);
@@ -29,6 +31,15 @@ function App() {
     }
   };
 
+  const requestWakeLock = async () => {
+    try {
+      const wakeLock = await navigator.wakeLock.request('screen');
+      setWakeLock(wakeLock);
+    } catch (err) {
+      console.log(`Unable to keep the screen awake`, err);
+    }
+  };
+
   useEffect(() => {
     if (midiAccess) {
       midiAccess.addEventListener('statechange', handleInputs);
@@ -40,7 +51,16 @@ function App() {
   }, [midiAccess]);
 
   useEffect(() => {
+    if (wakeLock) {
+      return () => {
+        wakeLock.release();
+      };
+    }
+  }, [wakeLock]);
+
+  useEffect(() => {
     MIDI_COMPATIBLE && requestMidiAccess();
+    WAKELOCK_COMPATIBLE && requestWakeLock();
   }, []);
 
   return (
