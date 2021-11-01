@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { KEY_MAP, KEY_ON, MIDDLE_C_KEY, Note } from '../keys';
+import { COMMAND_KEY_OFF, COMMAND_KEY_ON, KEY_MAP, MIDDLE_C_KEY, Note } from '../keys';
 import { getRandomeNote, RandomNoteOptions } from '../utils';
 
 type Options = RandomNoteOptions;
@@ -62,12 +62,14 @@ export const usePiano = (inputs: WebMidi.MIDIInputMap | null, options: Options) 
   };
 
   const handleInputs = ({ data: [command, key, velocity] }: any) => {
-    if (command === KEY_ON) {
+    if (command === COMMAND_KEY_ON) {
       if (velocity > 0) {
         handleOn(key);
       } else {
         handleOff(key);
       }
+    } else if (command === COMMAND_KEY_OFF) {
+      handleOff(key);
     }
   };
 

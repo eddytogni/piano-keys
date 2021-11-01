@@ -1,5 +1,5 @@
-export const KEY_ON = 144;
-export const KEY_OFF = 128;
+export const COMMAND_KEY_ON = 144;
+export const COMMAND_KEY_OFF = 128;
 
 type KeyName = 'A' | '#A' | 'B' | 'C' | '#C' | 'D' | '#D' | 'E' | 'F' | '#F' | 'G' | '#G';
 
